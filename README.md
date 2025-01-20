@@ -1,6 +1,6 @@
 #Final Project
-# Group Membars Information
-  Name: .Mohammad
-  Name:Heather Meatherall
-  Name:Simon Gotera Vargas
-  Name:Meron Daniel
+# Group Members Information
+  Name: .Mohammad<br>
+  Name: Heather Meatherall<br>
+  Name: Simon Gotera Vargas<br>
+  Name: Meron Daniel<br>
