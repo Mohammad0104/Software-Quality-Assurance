@@ -2,6 +2,6 @@ Welcome to the banking system
 enter the session type:
 login success
 enter account name
-enter an initial balance
-transaction cancelled:: initial balance can't exceed 99999.99
+enter account number
+Invalid account number 
 session terminated
