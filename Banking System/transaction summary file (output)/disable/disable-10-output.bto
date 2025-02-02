@@ -7,4 +7,16 @@ account 34567 disabled
 account holder
 account number
 transaction cancelled: account disabled
+enter account name
+enter account number
+transaction cancelled: account disabled
+enter account name
+enter account holder
+transaction cancelled: account disabled
+account holder
+account number
+transaction cancelled: account disabled
+account holder
+account number
+transaction cancelled: account disabled
 session terminated
