@@ -1,13 +1,9 @@
 Final Project
 
 Group Members Information
-
 Mohammad (100755461)
-
 Heather Meatherall (100823999)
-
 Simon Gotera Vargas (100872011)
-
 Meron Daniel (100864048)
 
 How to Run
