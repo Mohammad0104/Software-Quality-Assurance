@@ -1,35 +1,30 @@
 class removeAccount:
-    accountHolder = ''
-    accountNumber = ''
+    account_holder = ''
+    account_number = ''
+    balance = 500 
     active = True
-    transactionFileLine = ''
-    balance = 500 #get balance from account file
+    transaction_file_line = ''
 
 
     def delete(self):
-        self.accountHolder = input("enter account holder ")
-        self.accountNumber = input("enter account number ")
+        self.account_holder = input("enter account holder ")
+        self.account_number = input("enter account number ")
 
         #remove from current account file
-        self.transactionFileLine = "06 " + str(self.accountHolder).ljust(20) + " " + self.accountNumber + " " + str(self.balance).zfill(8) + " DD"
-        print(f'account {self.accountNumber} was deleted')
+        self.transaction_file_line = "06 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD"
+        print(f'account {self.account_number} was deleted')
 
-        return self.transactionFileLine
+        return self.transaction_file_line
 
     def disable(self):
-        self.accountHolder = input("enter account holder ")
-        self.accountNumber = input("enter account number ")
+        self.account_holder = input("enter account holder ")
+        self.account_number = input("enter account number ")
         self.active = False
 
         #update current account file
         #add transaction line to file
-        self.transactionFileLine = "07 " + str(self.accountHolder).ljust(20) + " " + self.accountNumber + " " + str(self.balance).zfill(8) + " DD" 
-        print(f'account {self.accountNumber} was disabled')
+        self.transaction_file_line = "07 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD" 
+        print(f'account {self.account_number} was disabled')
 
-        return self.transactionFileLine
-
-    
-# p1 = removeAccount()
-# p1.deleteAccount()
-# p1.disableAccount()
+        return self.transaction_file_line
 
