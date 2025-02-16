@@ -2,7 +2,7 @@ import user
 import login_logout 
 import removeAccount
 import createAccount
-
+import moveMoney
 
 def handle_command(session):
     privlagedTransactions = ["create", "changeplan", "delete", "disable"]
@@ -34,6 +34,20 @@ def handle_command(session):
                 t = removeAccount.removeAccount()
                 run = getattr(t, transaction)
                 session.transactions.append(run())
+                
+            elif transaction == "paybill":
+                move_money = moveMoney.moveMoney()
+                move_money.paybill()
+                
+            elif transaction == "transfer":
+                move_money = moveMoney.moveMoney()
+                move_money.transfer()
+                
+            elif transaction =="deposit":
+                move_money = moveMoney.moveMoney()
+                move_money.deposit()
+
+
 
             print(f"Transaction '{transaction}' completed successfully.")
         else:

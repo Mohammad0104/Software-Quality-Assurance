@@ -108,7 +108,7 @@ class moveMoney:
 
 
 
-account = moveMoney()
-account.transfer()
-account.paybill()
-account.deposit()
+# account = moveMoney()
+# account.transfer()
+# account.paybill()
+# account.deposit()
