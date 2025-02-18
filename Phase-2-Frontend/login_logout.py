@@ -1,7 +1,7 @@
 import sys
 
 def read_bank_accounts():
-    """Simulates reading the current bank accounts file."""
+    """Simulates reading the current bank accounts file"""
     print("Reading bank accounts file...")
     return {}
 
