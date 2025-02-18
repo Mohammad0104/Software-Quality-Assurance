@@ -21,6 +21,6 @@ python main.py
 You will be able to run the project successfully.
 
 
-UML Diagram
 
+**UML Diagram**
 ![SQA-UML-Diagram-1](https://github.com/user-attachments/assets/67996fb9-9642-483d-b1ef-b323d6814268)
