@@ -12,7 +12,7 @@ class removeAccount:
 
         #remove from current account file
         self.transaction_file_line = "06 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD"
-        print(f'account {self.account_number} was deleted')
+        print(f'account {self.account_number} deleted')
 
         return self.transaction_file_line
 
@@ -24,7 +24,6 @@ class removeAccount:
         #update current account file
         #add transaction line to file
         self.transaction_file_line = "07 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD" 
-        print(f'account {self.account_number} was disabled')
+        print(f'account {self.account_number} disabled')
 
         return self.transaction_file_line
-
