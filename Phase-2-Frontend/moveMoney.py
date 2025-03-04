@@ -12,21 +12,21 @@ class moveMoney:
         amountCheck = False
     
         #User enters account holder
-        self.account_holder = input("Enter account holder: ")
+        self.account_holder = input("Enter account holder ")
         
 
         #User enters account number whom they want money transferred to/from
-        self.transferTo = input("Enter account number to transfer to: ")
-        self.transferFrom = input("Enter account number to transfer from: ")
+        self.transferTo = input("enter account number to transfer to ")
+        self.transferFrom = input("enter account number to transfer from ")
 
         print(f"balance value: {self.balance}")
 
         #Checks if amount inputted is within limit
         while (not amountCheck):
-            self.transferAmount = float(input("Enter amount to transfer: "))
+            self.transferAmount = float(input("enter amount to transfer "))
             
             if (self.transferAmount > self.balance and self.transferAmount > 1000):
-                print("Transfer amount is greater than Balance and is over $1000, try again!")
+                print("transferred failed! Please enter transfer value less than 1000")
                 transferAmount = 0.0
                 amountCheck = False
 
@@ -38,27 +38,27 @@ class moveMoney:
             else:
                 amountCheck = True
 
-        print("Transfer payment has been completed!")
+        print("Transfer accepted")
 
 
 
 
-    def paybill(self):
+    def pay_bill(self):
         company = ''
         companyCheck = False
-        payAmount = 0.0
+        payAmount = 0
 
         amountCheck = False
 
         #User enters account holder
-        self.account_holder = input("Enter account holder: ")
+        self.account_holder = input("Enter account holder ")
         
         #User enters account number
-        self.account_number = input("Enter account number: ")
+        self.account_number = input("Enter account number ")
 
         #Checks if company inputted is on the list
         while (not companyCheck):
-            self.company = input("Enter either of these companies initials that will pay the bills (EC, CQ, or FI): ")
+            self.company = input("enter company: ")
 
             if (self.company.upper() != "EC" and self.company.upper() != "CQ" and self.company.upper() != "FI"):
                 print("Company initials is invalid, try again!")
@@ -68,26 +68,26 @@ class moveMoney:
                 companyCheck = True
 
 
-        print(f"balance value: {self.balance}")
+        # print(f"balance value: {self.balance}")
 
         #Checks if amount inputted is within limit
         while (not amountCheck):
-            self.payAmount = float(input("Enter the amount to pay: "))
+            self.payAmount = int(input("enter bill "))
             
             if (self.payAmount > self.balance and self.payAmount > 2000):
-                print("Amount paid is greater than Balance and is over $2000, try again!")
-                payAmount = 0.0
+                print("Bill input is over 2000, it must be less than that!")
+                payAmount = 0
                 amountCheck = False
 
             elif (self.payAmount > self.balance or self.payAmount > 2000):
                 print("Try again!")
-                payAmount = 0.0
+                payAmount = 0
                 amountCheck = False
             
             else:
                 amountCheck = True
 
-        print("Bill payment has been completed!")
+        print(f'{self.payAmount} bill sent to account {self.account_number}')
 
 
 
@@ -97,18 +97,11 @@ class moveMoney:
         depositAmount = 0.0
 
         #User enters account holder
-        self.account_holder = input("Enter account holder: ")
+        self.account_holder = input("enter account holder ")
 
         #User enters account number
-        self.account_number = input("Enter account number: ")
+        self.account_number = input("enter account number ")
 
-        self.depositAmount = input("Enter amount to deposit: ")
+        self.depositAmount = input("enter amount to deposit ")
 
-        print("Deposit payment has been completed!")
-
-
-
-# account = moveMoney()
-# account.transfer()
-# account.paybill()
-# account.deposit()
+        print(f'{self.depositAmount} deposited into account {self.account_number}')
