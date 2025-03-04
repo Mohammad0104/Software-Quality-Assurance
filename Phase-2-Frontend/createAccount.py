@@ -25,7 +25,7 @@ class createAccount:
         print(f'account {self.account_number} was created with initial balance {self.initial_balance}')
         return self.transaction_file_line
 
-    def changeplan(self):
+    def change_plan(self):
         self.account_holder = input("enter account holder ")
         self.account_number = input("enter account number ")
         self.payment_plan = 'NP'
@@ -36,5 +36,5 @@ class createAccount:
         self.transaction_file_line = "08 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.initial_balance).zfill(8) + " " + self.payment_plan
         self.account_info = self.account_number + ' ' + self.account_holder + ' A ' + str(self.initial_balance)
         
-        print(f'account {self.account_number} payment plan changed to non-student')
+        print(f'account {self.account_number} status has been change to NP')
         return self.transaction_file_line
