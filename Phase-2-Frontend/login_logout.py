@@ -1,9 +1,5 @@
 import sys
-
-def read_bank_accounts():
-    """Simulates reading the current bank accounts file."""
-    # print("Reading bank accounts file...")
-    return {}
+import account_utils
 
 def write_transactions(transactions):
     """Simulates writing the transaction log to a file."""
@@ -31,18 +27,26 @@ class Login:
             
             if session_type == "standard":
             
-                self.account_holder = input("Enter account holder's name: ").strip()
-                if not self.account_holder:
+                name = input("Enter account holder's name: ").strip()
+                if not name:
                     print("Account holder's name is required for Standard login.")
                     continue
-            
-            # Read bank accounts file (Assume read_bank_accounts() is implemented)
-            self.bank_accounts = read_bank_accounts()
-            
-            self.logged_in = True
-            self.admin_mode = session_type == "admin"
-            print("login success")
-            # print(f"Login Successful: Welcome {self.account_holder if self.account_holder else 'Admin'} ({session_type.capitalize()})!")
+                found = False
+                accounts = account_utils.read_bank_accounts()
+                
+                if account_utils.find_account_by_name(accounts,name):  
+                    self.account_holder = name 
+                    found = True
+                    self.logged_in = True
+                if not found:
+                    print('error: user name does not exist')
+                       
+            else:
+                  
+                self.logged_in = True
+                self.admin_mode = session_type == "admin"
+                print("login success")
+                # print(f"Login Successful: Welcome {self.account_holder if self.account_holder else 'Admin'} ({session_type.capitalize()})!")
     
     def logout(self):
         if not self.logged_in:

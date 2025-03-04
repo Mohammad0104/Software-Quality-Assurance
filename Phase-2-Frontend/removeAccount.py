@@ -1,29 +1,115 @@
-class removeAccount:
-    account_holder = ''
-    account_number = ''
-    balance = 500 
-    active = True
-    transaction_file_line = ''
+import account_utils
 
+class removeAccount:
+    def __init__(self):
+        self.account_holder = ''
+        self.account_number = ''
+        self.balance = 0
+        self.active = True
+        self.transaction_file_line = ''
 
     def delete(self):
-        self.account_holder = input("enter account holder ")
-        self.account_number = input("enter account number ")
+        accounts = account_utils.read_bank_accounts()
+        
+        # Get account holder name and find the account
+        self.account_holder = input("Enter account holder: ").strip()
+        account = account_utils.find_account(accounts, self.account_holder)
+        
+        if not account:
+            print('Error: User name does not exist.')
+            return None
 
-        #remove from current account file
-        self.transaction_file_line = "06 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD"
-        print(f'account {self.account_number} deleted')
+        # Get account number and validate it matches the found account
+        self.account_number = input("Enter account number: ").strip()
+        if self.account_number != account["account_number"]:
+            print("Error: Account number does not match account holder.")
+            return None
+
+        # Check if the account is already disabled
+        if account["status"] == "D":
+            print("Error: Cannot delete a disabled account.")
+            return None
+
+        # Set balance and remove account from the list
+        self.balance = account["balance"]
+        accounts.remove(account)
+
+        # Update accounts.txt
+        account_utils.update_bank_accounts(accounts)
+
+        self.transaction_file_line = f"06 {self.account_holder.ljust(20)} {self.account_number} {str(self.balance).zfill(8)} DD"
+        print(f'Account {self.account_number} deleted successfully.')
 
         return self.transaction_file_line
 
     def disable(self):
-        self.account_holder = input("enter account holder ")
-        self.account_number = input("enter account number ")
-        self.active = False
+        accounts = account_utils.read_bank_accounts()
+        
+        # Get account holder name and find the account
+        self.account_holder = input("Enter account holder: ").strip()
+        account = account_utils.find_account(accounts, self.account_holder)
+        
+        if not account:
+            print('Error: User name does not exist.')
+            return None
 
-        #update current account file
-        #add transaction line to file
-        self.transaction_file_line = "07 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD" 
-        print(f'account {self.account_number} disabled')
+        # Get account number and validate it matches the found account
+        self.account_number = input("Enter account number: ").strip()
+        if self.account_number != account["account_number"]:
+            print("Error: Account number does not match account holder.")
+            return None
+
+        # Check if the account is already disabled
+        if account["status"] == "D":
+            print("Error: Account is already disabled.")
+            return None
+
+        # Update status to disabled
+        account["status"] = "D"
+        account_utils.update_bank_accounts(accounts)
+
+        self.transaction_file_line = f"07 {self.account_holder.ljust(20)} {self.account_number} {str(account['balance']).zfill(8)} DD"
+        print(f'Account {self.account_number} disabled successfully.')
 
         return self.transaction_file_line
+
+
+
+
+
+
+# class removeAccount:
+#     account_holder = ''
+#     account_number = ''
+#     balance = 500 
+#     active = True
+#     transaction_file_line = ''
+
+
+#     def delete(self):
+        
+#         name = input("enter account holder ")
+#         accounts = account_utils.read_bank_accounts()
+#         account = account_utils.find_account(accounts,name)
+#         if not account:
+#             print('error: user name does not exist')
+        
+#         self.account_number = input("enter account number ")
+
+#         #remove from current account file
+#         self.transaction_file_line = "06 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD"
+#         print(f'account {self.account_number} deleted')
+
+#         return self.transaction_file_line
+
+#     def disable(self):
+#         self.account_holder = input("enter account holder ")
+#         self.account_number = input("enter account number ")
+#         self.active = False
+
+#         #update current account file
+#         #add transaction line to file
+#         self.transaction_file_line = "07 " + str(self.account_holder).ljust(20) + " " + self.account_number + " " + str(self.balance).zfill(8) + " DD" 
+#         print(f'account {self.account_number} disabled')
+
+#         return self.transaction_file_line
