@@ -23,7 +23,7 @@ class Login:
     def start_session(self):
         while not self.logged_in:
             print("Welcome to the banking system")
-            session_type = input("Enter the session type: ").strip().lower()
+            session_type = input("enter the session type: ").strip().lower()
             
             if session_type not in ["standard", "admin"]:
                 print("Invalid session type. Please enter 'Standard' or 'Admin'.")

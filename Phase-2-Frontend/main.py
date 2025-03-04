@@ -5,7 +5,7 @@ import createAccount
 import moveMoney
 
 def handle_command(session):
-    privlagedTransactions = ["create", "changeplan", "delete", "disable"]
+    privlagedTransactions = ["create", "change_plan", "delete", "disable"]
     while session.logged_in:
         transaction = input("").strip().lower()
         
