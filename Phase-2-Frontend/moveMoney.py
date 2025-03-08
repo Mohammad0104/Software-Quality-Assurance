@@ -112,7 +112,7 @@ class moveMoney:
             if account["account_name"].lower() == self.account_holder.lower():
                 account["balance"] = account["balance"] - float(self.payAmount)
 
-        print(f'{self.payAmount} bill sent to account {self.account_number}')
+        print(f'{self.payAmount} bill sent to account {self.company}')
 
         
         account_utils.update_bank_accounts(accounts)
@@ -145,3 +145,44 @@ class moveMoney:
 
         print(f'{self.depositAmount} deposited into account {self.account_number}')
         account_utils.update_bank_accounts(accounts)
+        
+    def withdraw(self):
+        accounts = account_utils.read_bank_accounts()
+        withdrawAmount = 0
+        amountCheck = False
+
+        # User enters account holder
+        self.account_holder = input("Enter account holder: ")
+        account = account_utils.find_account(accounts, self.account_holder)
+        
+        # User enters account number
+        self.account_number = input("Enter account number: ")
+        if self.account_number != account["account_number"]:
+            print("Error: Account number does not match account holder.")
+            return None
+
+        # Checks if withdrawal amount is within limit
+        while not amountCheck:
+            self.withdrawAmount = float(input("Enter withdrawal amount: "))
+            
+            if self.withdrawAmount > 2000:
+                print("Withdrawal amount exceeds $2000 limit. Try again!")
+                withdrawAmount = 0
+                amountCheck = False
+            
+            elif self.withdrawAmount > account["balance"]:
+                print("Insufficient balance! Try again.")
+                withdrawAmount = 0
+                amountCheck = False
+            
+            else:
+                amountCheck = True
+        
+        for account in accounts:
+            if account["account_name"].lower() == self.account_holder.lower():
+                account["balance"] -= self.withdrawAmount
+
+        print(f'${self.withdrawAmount} withdrawn from account {self.account_number}.')
+        
+        account_utils.update_bank_accounts(accounts)
+

@@ -42,6 +42,9 @@ def handle_command(session):
         elif transaction =="deposit":
             move_money = moveMoney.moveMoney()
             move_money.deposit()
+        elif transaction =="withdraw":
+            move_money = moveMoney.moveMoney()
+            move_money.withdraw()
 
         else:
             print("Error: Please enter a transaction.")
