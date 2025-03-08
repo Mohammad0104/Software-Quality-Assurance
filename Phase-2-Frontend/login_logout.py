@@ -4,8 +4,8 @@ import account_utils
 def write_transactions(transactions):
     """Simulates writing the transaction log to a file."""
     # print("Writing transactions to file...")
-    # for transaction in transactions:
-    #     print(transaction)
+    for transaction in transactions:
+        print(transaction)
 
 class Login:
     # This class is used to hold information of the current login session S

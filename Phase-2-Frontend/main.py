@@ -22,7 +22,7 @@ def handle_command(session):
             continue
             
         if transaction == "create" or transaction == "change_plan":
-            t = createAccount.createAccount()
+            t = createAccount.CreateAccount()
             run = getattr(t, transaction)
             session.transactions.append(run())
         
