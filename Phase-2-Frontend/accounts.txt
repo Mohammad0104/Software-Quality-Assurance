@@ -7,3 +7,19 @@
 23456 jane D 000500.0
 34567 willow D 000000.0
 END_OF_FILE
+34568 1000                 A 00000100
+END_OF_FILE
+34569 moha                 A 00000010
+END_OF_FILE
+34570 md                   A 00000000
+END_OF_FILE
+34571 md                   A 00000010
+END_OF_FILE
+34572 md                   A 00000100
+34573 md3                  A 00000010
+34574 md5                  A 00001002
+34575 md1                  A 00000001
+34576 md3                  A 00000001
+34577 m                    A 00000001
+END_OF_FILE
+34578 md2                  A 00000010
