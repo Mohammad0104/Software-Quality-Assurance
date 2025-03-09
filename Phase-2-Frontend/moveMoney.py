@@ -76,6 +76,9 @@ class moveMoney:
         #User enters account holder
         self.account_holder = input("Enter account holder ")
         account = account_utils.find_account(accounts, self.account_holder)
+        if not account:
+            print('Error: User name does not exist.')
+            return False,""
         
         #User enters account number
         self.account_number = input("Enter account number ")
@@ -160,6 +163,9 @@ class moveMoney:
         # User enters account holder
         self.account_holder = input("Enter account holder: ")
         account = account_utils.find_account(accounts, self.account_holder)
+        if not accounts:
+            print('Error: User name does not exist.')
+            return False,""
         
         # User enters account number
         self.account_number = input("Enter account number: ")

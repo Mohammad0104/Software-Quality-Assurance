@@ -8,18 +8,14 @@ class CreateAccount:
 
     def get_next_account_number(self):
         """Retrieve the next account number by reading the last entry in the account file."""
-        try:
-            with open(self.account_file, 'r') as file:
-                lines = file.readlines()
-                
-                if lines:
-                    last_line = lines[-1].strip()
-                    last_account_line = lines[-2] if last_line == 'END_OF_FILE' else last_line
-                    return int(last_account_line.split()[0]) + 1
-                else:
-                    return 1  
-        except FileNotFoundError:
-            return 1  
+        accounts = account_utils.read_bank_accounts()
+        if len(accounts)<1:
+            return 1
+        
+        lastAccount = int(accounts[-1]["account_number"])
+        return lastAccount +1
+        
+        
 
     def create(self):
         """Create a new bank account by prompting the user for account details and appending to the account file."""
