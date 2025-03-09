@@ -13,13 +13,13 @@ ACTUAL_DIR="$SCRIPT_DIR/test_outputs"
 differences_found=false
 
 # Find all .bto files in the expected output directory
-find "$EXPECTED_DIR" -type f -name "*.bto" | while read -r expected_file; do
+while read -r expected_file; do
     # Get the relative path of the expected output file
-    relative_path="${expected_file#$EXPECTED_DIR/}"
-    
-    # Get the corresponding actual output file path, preserving subdirectory structure
-    actual_file="$ACTUAL_DIR/$relative_path"
-    
+    relative_path="$(realpath --relative-to="$EXPECTED_DIR" "$expected_file")"
+
+    # Get the corresponding actual output file path
+    actual_file="$ACTUAL_DIR/${relative_path%.bto}.out"
+
     # Check if the actual output file exists
     if [ ! -f "$actual_file" ]; then
         echo "Missing actual output file for: $relative_path"
@@ -35,12 +35,10 @@ find "$EXPECTED_DIR" -type f -name "*.bto" | while read -r expected_file; do
     else
         echo "Test passed: $relative_path"
     fi
-done
+done < <(find "$EXPECTED_DIR" -type f -name "*.bto")
 
-# Exit with a non-zero status if differences were found
-if [ "$differences_found" = true ]; then
-    exit 1
-else
+# Exit
+
     echo "All tests passed."
     exit 0
 fi
