@@ -30,6 +30,13 @@ def find_account_by_name(accounts, name):
         if account["account_name"].lower() == name.lower():  # Case-insensitive comparison
             return True # Return the account details if found
     return False
+
+def find_account_by_number(accounts, number):
+    for account in accounts:
+        if account["account_number"] == number:  # Case-insensitive comparison
+            return True # Return the account details if found
+    return False
+
 def find_account(accounts, name):
     for account in accounts:
         if account["account_name"].lower() == name.lower():  # Case-insensitive comparison

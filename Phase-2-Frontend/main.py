@@ -33,18 +33,30 @@ def handle_command(session):
                 
         elif transaction == "pay_bill":
             move_money = moveMoney.moveMoney()
-            move_money.pay_bill()
+            complete,line =move_money.pay_bill()
+            if complete:
+                session.transactions.append(line)
                 
         elif transaction == "transfer":
             move_money = moveMoney.moveMoney()
-            move_money.transfer()
+            complete,line =move_money.transfer()
+            if complete:
+                session.transactions.append(line)
+                
                 
         elif transaction =="deposit":
             move_money = moveMoney.moveMoney()
-            move_money.deposit()
+            complete,line = move_money.deposit()
+            if complete:
+                session.transactions.append(line)
+                
         elif transaction =="withdraw":
             move_money = moveMoney.moveMoney()
-            move_money.withdraw()
+            complete,line = move_money.withdraw()
+            
+            if complete:
+                session.transactions.append(line)
+                
 
         else:
             print("Error: Please enter a transaction.")
